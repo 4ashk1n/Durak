@@ -14,7 +14,6 @@ def skolko_kozir(kozir,cardsbot):
 
 
 def proverka(a,b,kozir):
-    #a on b     a,b='number mast'
     if a.split(' ')[-1] in b and kozir not in a and numbers52.index(a.split(' ')[0])>numbers52.index(b.split(' ')[0]):   #Обычная на обычную
         return 1        
     elif kozir in a and kozir not in b:    #Козырь на обычную
@@ -60,8 +59,8 @@ def podkid_bot(cardsbot,stol):
     return cardsbot,stol
 
 def sortirovka(cardsbot):
-    #Сортировка массива по индексам в намберс52        n!
-    #return sorted(cardsbot, key=lambda card: numbers52.index(card.split(' ')[0]))
+    #Сортировка массива по индексам в намберс52        
+
     cardsbot=sorted(cardsbot, key=lambda card: numbers52.index(card.split(' ')[0]))
     cardsbot=sorted(cardsbot, key=lambda card: masti.index(card.split(' ')[1]))
     return cardsbot
@@ -120,15 +119,10 @@ def k52():                                                                  #52 
             koloda.append(number+' '+mast)
     koloda=set(koloda)
     koloda=list(koloda)
-##    print(koloda)
+
 
 def delete_stol(cards,cardsbot,stol):
-##    print(stol)
     for k in stol:
-        
-##        print(k)
-##        print(k in cards)
-##        print(k in cardsbot)
         if k in cards:
             cards.remove(k)
         if k in cardsbot:
@@ -138,7 +132,6 @@ def delete_stol(cards,cardsbot,stol):
 
 def k36():
     global koloda
-    #print(36)
     koloda=[]
     
     for number in numbers36:
@@ -146,7 +139,6 @@ def k36():
             koloda.append(number+' '+mast)
     koloda=set(koloda)
     koloda=list(koloda)
-##    print(koloda)
 
 def k24():
     global koloda
@@ -157,8 +149,6 @@ def k24():
             koloda.append(number+' '+mast)
     koloda=set(koloda)
     koloda=list(koloda)
-##    print(koloda)
-
 endkoloda=0
 def vidacha(cards,koloda,kozir):
     global endkoloda
@@ -191,15 +181,14 @@ def game(koloda): #ИГРA
     stol=[]
     beginner=na4alo(cards,cardsbot,kozir)
     print('КОЗЫРЬ: ',kozir)
-    #print('КАРТЫ ИГРОКА: ',cards)
-    
+
+ 
     #0 - юзер, 1 - бот
     if beginner==0:
         print("Вы начинаете")
     while True:
         cards,koloda=vidacha(cards,koloda,kozir)
         cardsbot,koloda=vidacha(cardsbot,koloda,kozir)
-##        print('КАРТЫ БОТА: ',cardsbot)
         if beginner==0:                                             #юзер, бот отбивается
             if proverkaoshibki1==0:
                 user_cards(cards,stol)
